@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('layouts/header') %>
+  <body>
+    <h1 class="display-3 text-center">เพิ่มสินค้า</h1>
+    <div id="result">
+        
+    </div>
+    <form action="/add-product" method="post" class="w-50 mx-auto">
+      <div class="mb-1 px-3">
+        <label for="" class="form-label">ชื่อสินค้า</label>
+        <input
+          required
+          type="text"
+          name="name"
+          id=""
+          class="form-control"
+          placeholder=""
+          aria-describedby="helpId"
+        />
+      </div>
+      <div class="mb-1 px-3">
+        <label for="" class="form-label">ราคา</label>
+        <input
+          required
+          type="text"
+          name="price"
+          id=""
+          class="form-control"
+          placeholder=""
+          aria-describedby="helpId"
+        />
+      </div>
+      <div class="mb-1 px-3">
+        <label for="" class="form-label">คงเหลือ</label>
+        <input
+          required
+          type="text"
+          name="stock"
+          id=""
+          class="form-control"
+          placeholder=""
+          aria-describedby="helpId"
+        />
+      </div>
+      <div class="mb-1 px-3">
+        <label for="" class="form-label">วันที่เพิ่มสินค้า</label>
+        <input
+          
+          type="date"
+          name="date_add"
+          id=""
+          required
+          class="form-control"
+          placeholder=""
+          aria-describedby="helpId"
+        />
+      </div>
+      <div class="mb-3 px-3">
+        <label for="" class="form-label">รายละเอียดสินค้า</label>
+        <textarea class="form-control" name="description" id="" rows="6"></textarea>
+      </div>
+      <button type="submit" class="btn btn-success mb-1 px-4 mx-3">
+        เพิ่มสินค้า
+      </button>
+      <button type="reset" class="btn btn-danger mb-1 px-5 mx-3">ล้าง</button>
+    </form>
+    <a href="/">หน้าแรก</a>
+
+    <script>
+        <% if (locals.result && result == true) { %>
+            alert("สำเร็จ")
+        <% } else if (locals.result && result == false) { %>
+            alert("เกิดข้อผิดพลาด")
+            <!-- <span style="color:red">เกิดข้อผิดพลาด ข้อมูลไม่ถูกบันทึก</span> -->
+        <% } %>
+    </script>
+  </body>
+</html>

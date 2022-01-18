@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/header') %>
+<body>
+    <h1 class="display-1 text-center">Hello product</h1>
+    <% if(locals.data) { %>
+        <table class="table table-ligh table-hover table-bordered text-center p-2 mx-auto w-50">
+    
+                <tr class="thead-dark bg-light">
+                    <th>ชื่อ</th>
+                    <th>ราคา</th>
+                    <th>คงเหลือ</th>
+                    <th>วันที่เพิ่ม</th>
+                    <th>รายละอียด</th>
+                </tr>
+
+            <% 
+                for (d of data){
+                    let dt = new Date(Date.parse(d.date_added))
+                    let df = `${dt.getDate()} - ${dt.getMonth()+1} - ${dt.getFullYear()}`
+            %>
+            <tr>
+                <td><%= d.name %></td>
+                <td><%= d.price %></td>
+                <td><%= d.stock %></td>
+                <td><%= df %></td>
+                <td><%= d.description %></td>
+            </tr>
+            <% } %>
+        </table>
+    <% } %>
+
+    <a href="/">หน้าแรก</a>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/header') %>
+<body class="w-50 mx-auto">
+    <h1 class="display-1 text-center">Hello Edit</h1>
+    <a href="/">หน้าแรก</a>
+    <%
+        let kw = (locals.q) ? q:''
+    %>
+    <form action="/show-product-search" method="get" >
+        <div class="input-group">
+            <input type="search" name="q" placeholder="ค้นหาชื่อสินค้า" value="<%= kw %>" id="" class="form-control">
+            <div class="input-group-apped">
+                <button type="submit" class="btn btn-success">ค้นหา</button>
+            </div>
+        </div>
+    </form>
+
+    <% if(locals.data) { %>
+
+        <h1 class="display-6">รายการข้อมูล</h1>
+        <table class="table table-ligh table-hover table-bordered text-center p-2 ">
+    
+                <tr class="thead-dark bg-light">
+                    <th>แก้ใข</th>
+                    <th>ชื่อ</th>
+                    <th>ราคา</th>
+                    <th>คงเหลือ</th>
+                    <th>วันที่เพิ่ม</th>
+                    <th>รายละอียด</th>
+                </tr>
+
+            <% 
+                for (d of data){
+                    let dt = new Date(Date.parse(d.date_added))
+                    let df = `${dt.getDate()} - ${dt.getMonth()+1} - ${dt.getFullYear()}`
+            %>
+            <tr>
+                <td><a href="/edit-product/edit/<%= d._id %>">แก้ใข</a> | <a href="/delete-product/<%= d._id%>">ลบ</a></td>
+                <td><%= d.name %></td>
+                <td><%= d.price %></td>
+                <td><%= d.stock %></td>
+                <td><%= df %></td>
+                <td><%= d.description %></td>
+            </tr>
+            <% } %>
+        </table>
+    <% } else { %>
+    
+        <h1 class="display-6">ไม่มีข้อมูล</h1>
+    <% } %>
+        <!-- <script>
+            function delProduct(id){
+                if(confirm('confirm delete data')){
+                    location.href = 
+                }
+            }
+        </script> -->
+</body>
+</html>
