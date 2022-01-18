@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb+srv://kennodejs:kennodejs@cluster0.magv9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',{
+mongoose.connect(process.env.MONGODB_URL || "mongodb+srv://kennodejs:kennodejs@cluster0.magv9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",{
     useNewUrlParser:true , 
     useUnifiedTopology: true
 }).catch(err => {console.log(err);})

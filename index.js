@@ -4,7 +4,9 @@ const app = express()
 const Product = require('./db/model')
 
 const bodyParser = require('body-parser')
+
 const PORT = process.env.PORT || 3000
+
 app.set('view engine', 'ejs')
 app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist'))
 app.use(bodyParser.urlencoded({ extended: true }))
